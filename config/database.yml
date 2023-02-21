@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  port: 5433
+  username: postgres
+  password: Harjetunmobi$#3w
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: scheduled_tweets_development
+
+test:
+  <<: *default
+  database: scheduled_tweets_test
+
+production:
+  <<: *default
+  database: scheduled_tweets_production
+  username: scheduled_tweets
+  password: <%= ENV['SCHEDULED_TWEETS_DATABASE_PASSWORD'] %>
